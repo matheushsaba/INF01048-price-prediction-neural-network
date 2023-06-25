@@ -48,8 +48,7 @@ def step_gradient(b, w, data, alpha):
     number_of_values = len(data)                # quantidade de valores de x e y conhecidos
     derivative_factor = 2 / number_of_values    # valor extraído da derivada na equação de descida de gradiente
 
-
-    # faz um loop que atualiza o bias e o peso com cada valor da amostra
+    # faz um loop que calcular o fator de correção do bias e do peso
     for input_value, goal_value in zip(input_values , goal_values):
         prediction = w * input_value + b                                                # predição = w * x + b -> regressão usando equação de primeiro grau
         absolute_error = prediction - goal_value                                        # erro absoluto = predição - valor obtido
@@ -60,7 +59,6 @@ def step_gradient(b, w, data, alpha):
     corrected_bias = b - alpha * bias_correction_factor                                 # atualiza o bias com um fator de passo alfa
 
     return corrected_bias, corrected_weight
-
 
 def fit(data, b, w, alpha, num_iterations):
     """
